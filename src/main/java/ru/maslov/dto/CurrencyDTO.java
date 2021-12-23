@@ -8,6 +8,15 @@ public class CurrencyDTO {
     private long timestamp;
     private Map<String, Double> rates;
 
+    public CurrencyDTO() {}
+
+    public CurrencyDTO(String disclaimer, String license, long timestamp, Map<String, Double> rates) {
+        this.disclaimer = disclaimer;
+        this.license = license;
+        this.timestamp = timestamp;
+        this.rates = rates;
+    }
+
     public String getDisclaimer() {
         return disclaimer;
     }

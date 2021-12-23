@@ -13,14 +13,16 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     private final CurrencyClient currencyClient;
 
-    @Value("${openexchangerates.app.id}")
     private String appId;
 
-    @Value("${currency}")
     private String currency;
 
-    public CurrencyServiceImpl(CurrencyClient currencyClient) {
+    public CurrencyServiceImpl(CurrencyClient currencyClient,
+                               @Value("${openexchangerates.app.id}") String appId,
+                               @Value("${currency}") String currency) {
         this.currencyClient = currencyClient;
+        this.appId = appId;
+        this.currency = currency;
     }
 
     @Override

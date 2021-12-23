@@ -16,7 +16,9 @@ public class CurrencyCheckController {
         this.gifAtCurrencyService = gifAtCurrencyService;
     }
 
-    @GetMapping("/gif")
+
+
+    @GetMapping("/gif_by_currency")
     public String getGifByCurrency(Model model) {
         String embedUrl = gifAtCurrencyService.getGifByCurrency();
         model.addAttribute("embedUrl", embedUrl);
