@@ -1,5 +1,7 @@
 package ru.maslov.services;
 
+import ru.maslov.dto.GifDTO;
+
 public interface GifService {
-    void getGif();
+    GifDTO getGif(String tag);
 }
