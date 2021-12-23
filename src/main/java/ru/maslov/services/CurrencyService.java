@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CurrencyService {
 
-    public void getCurrency();
+    boolean isYesterdayValueMoreThanTodayValue();
 }
