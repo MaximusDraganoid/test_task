@@ -24,7 +24,7 @@ public class CurrencyServiceImpl implements CurrencyService {
     }
 
     @Override
-    public boolean isYesterdayValueMoreThanTodayValue() {
+    public boolean isTodayValueMoreThanYesterdayValue() {
         CurrencyDTO todayCurrency = getCurrencyByDate(LocalDate.now());
         CurrencyDTO yesterdayCurrency = getCurrencyByDate(LocalDate.now().minusDays(1L));
         return todayCurrency.getRates().get(currency)
