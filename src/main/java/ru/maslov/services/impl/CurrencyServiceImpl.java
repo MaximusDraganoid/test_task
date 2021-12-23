@@ -1,12 +1,14 @@
 package ru.maslov.services.impl;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import ru.maslov.clients.CurrencyClient;
 import ru.maslov.dto.CurrencyDTO;
 import ru.maslov.services.CurrencyService;
 
 import java.time.LocalDate;
 
+@Service
 public class CurrencyServiceImpl implements CurrencyService {
 
     private final CurrencyClient currencyClient;
