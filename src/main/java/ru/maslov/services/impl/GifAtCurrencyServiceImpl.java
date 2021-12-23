@@ -21,18 +21,15 @@ public class GifAtCurrencyServiceImpl implements GifAtCurrencyService {
 
     private final GifService gifService;
 
-    private final DownloadService downloadService;
 
     public GifAtCurrencyServiceImpl(CurrencyService currencyService,
-                                    GifService gifService,
-                                    DownloadService downloadService) {
+                                    GifService gifService) {
         this.currencyService = currencyService;
         this.gifService = gifService;
-        this.downloadService = downloadService;
     }
 
     @Override
-    public void getGifByCurrency() {
+    public String getGifByCurrency() {
         GifDTO resultOfRequest;
         if (currencyService.isTodayValueMoreThanYesterdayValue()) {
             resultOfRequest = gifService.getGif(RICH);
@@ -40,17 +37,11 @@ public class GifAtCurrencyServiceImpl implements GifAtCurrencyService {
             resultOfRequest = gifService.getGif(BROKE);
         }
 
-        String downloadUrl = getDownLoadUrlFromGifDTO(resultOfRequest);
-
-        System.out.println(downloadUrl);
-
-
+        return getDownLoadUrlFromGifDTO(resultOfRequest);
     }
 
 
     private String getDownLoadUrlFromGifDTO(GifDTO gifDTO) {
-        Map<String, Object> imagesData = (Map<String, Object>) gifDTO.getData().get("images");
-        Map<String ,String> originalGifData = (Map<String, String>) imagesData.get("original");
-        return originalGifData.get("mp4");
+        return gifDTO.getData().get("embed_url").toString();
     }
 }
