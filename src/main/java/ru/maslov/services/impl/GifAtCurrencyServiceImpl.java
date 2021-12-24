@@ -1,5 +1,6 @@
 package ru.maslov.services.impl;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.maslov.dto.GifDTO;
 import ru.maslov.services.CurrencyService;
@@ -12,9 +13,9 @@ import java.util.Map;
 @Service
 public class GifAtCurrencyServiceImpl implements GifAtCurrencyService {
 
-    private static final String BROKE = "broke";
-    private static final String RICH = "rich";
-    private static final String IMAGE = "images";
+    private final String broke;
+    private final String rich;
+    private final String embedUrl;
 
 
     private final CurrencyService currencyService;
@@ -23,18 +24,24 @@ public class GifAtCurrencyServiceImpl implements GifAtCurrencyService {
 
 
     public GifAtCurrencyServiceImpl(CurrencyService currencyService,
-                                    GifService gifService) {
+                                    GifService gifService,
+                                    @Value("${giphy.rich}") String rich,
+                                    @Value("${giphy.broke}") String broke,
+                                    @Value("${giphy.embed.url}") String embedUrl) {
         this.currencyService = currencyService;
         this.gifService = gifService;
+        this.rich = rich;
+        this.broke = broke;
+        this.embedUrl=embedUrl;
     }
 
     @Override
     public String getGifByCurrency() {
         GifDTO resultOfRequest;
         if (currencyService.isTodayValueMoreThanYesterdayValue()) {
-            resultOfRequest = gifService.getGif(RICH);
+            resultOfRequest = gifService.getGif(rich);
         } else {
-            resultOfRequest = gifService.getGif(BROKE);
+            resultOfRequest = gifService.getGif(broke);
         }
 
         return getDownLoadUrlFromGifDTO(resultOfRequest);
@@ -42,6 +49,6 @@ public class GifAtCurrencyServiceImpl implements GifAtCurrencyService {
 
 
     private String getDownLoadUrlFromGifDTO(GifDTO gifDTO) {
-        return gifDTO.getData().get("embed_url").toString();
+        return gifDTO.getData().get(embedUrl).toString();
     }
 }
