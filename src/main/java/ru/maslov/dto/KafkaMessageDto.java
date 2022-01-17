@@ -48,4 +48,14 @@ public class KafkaMessageDto {
     public void setCurrency(String currency) {
         this.currency = currency;
     }
+
+    @Override
+    public String toString() {
+        return "KafkaMessageDto{" +
+                "messageId=" + messageId +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", currency='" + currency + '\'' +
+                '}';
+    }
 }

@@ -28,4 +28,12 @@ public class BaseCurrencyDTO {
     public void setLicense(String license) {
         this.license = license;
     }
+
+    @Override
+    public String toString() {
+        return "BaseCurrencyDTO{" +
+                "disclaimer='" + disclaimer + '\'' +
+                ", license='" + license + '\'' +
+                '}';
+    }
 }

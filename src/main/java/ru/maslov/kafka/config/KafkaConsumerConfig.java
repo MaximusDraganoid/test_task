@@ -23,13 +23,6 @@ public class KafkaConsumerConfig {
     @Value("${spring.kafka.consumer.group-id}")
     private String kafkaGroupId;
 
-//    @Bean
-//    public Map<String, Object> consumerConfigs() {
-//
-//
-//        return props;
-//    }
-
     @Bean
     public ConsumerFactory<Long, KafkaMessageDto> consumerFactory() {
         //создаем deserializer, чтобы можно было мапить объекты из топика

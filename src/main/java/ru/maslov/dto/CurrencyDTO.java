@@ -30,4 +30,12 @@ public class CurrencyDTO extends BaseCurrencyDTO {
     public void setRates(Map<String, Double> rates) {
         this.rates = rates;
     }
+
+    @Override
+    public String toString() {
+        return "CurrencyDTO{" +
+                "timestamp=" + timestamp +
+                ", rates=" + rates +
+                "} " + super.toString();
+    }
 }
