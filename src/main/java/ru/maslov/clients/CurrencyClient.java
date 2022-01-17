@@ -13,4 +13,6 @@ public interface CurrencyClient {
     CurrencyDTO getCurrency(@PathVariable("date") String date,
                             @RequestParam(name = "app_id") String appId,
                             @RequestParam(name = "symbols") String symbols);
+    //todo: обобщить класс Currency и сделать подклассы, для решения задач
+
 }
