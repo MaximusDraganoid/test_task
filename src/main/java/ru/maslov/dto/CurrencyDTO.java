@@ -2,35 +2,17 @@ package ru.maslov.dto;
 
 import java.util.Map;
 
-public class CurrencyDTO {
-    private String disclaimer;
-    private String license;
+public class CurrencyDTO extends BaseCurrencyDTO {
     private long timestamp;
     private Map<String, Double> rates;
 
-    public CurrencyDTO() {}
+    public CurrencyDTO() {
+    }
 
     public CurrencyDTO(String disclaimer, String license, long timestamp, Map<String, Double> rates) {
-        this.disclaimer = disclaimer;
-        this.license = license;
+        super(disclaimer, license);
         this.timestamp = timestamp;
         this.rates = rates;
-    }
-
-    public String getDisclaimer() {
-        return disclaimer;
-    }
-
-    public void setDisclaimer(String disclaimer) {
-        this.disclaimer = disclaimer;
-    }
-
-    public String getLicense() {
-        return license;
-    }
-
-    public void setLicense(String license) {
-        this.license = license;
     }
 
     public long getTimestamp() {
